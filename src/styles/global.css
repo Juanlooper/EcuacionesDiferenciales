@@ -1,0 +1,50 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+@theme {
+  --color-scientific-bg: #0A0E17;
+  --color-scientific-card: #121826;
+  --color-scientific-panel: #1A2333;
+  --color-scientific-text: #EAF2FF;
+  --color-scientific-text-muted: #B0C4DE;
+  --color-scientific-math: #00E5FF;
+  --color-scientific-example: #A78BFA;
+  --color-scientific-success: #00FFB3;
+  --color-scientific-warning: #FFD166;
+  --color-scientific-error: #FF5C8A;
+
+  --font-title: 'Orbitron', sans-serif;
+  --font-content: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer utilities {
+  .scientific-grid {
+    background-size: 30px 30px;
+    background-image: 
+      linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .glow-soft {
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.3), 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+  }
+}
+
+body {
+  background-color: var(--color-scientific-bg);
+  color: var(--color-scientific-text);
+  font-family: var(--font-content);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}

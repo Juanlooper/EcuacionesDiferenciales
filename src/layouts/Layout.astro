@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Ecuaciones Diferenciales</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-scientific-bg text-scientific-text min-h-screen scientific-grid overflow-x-hidden">
+    <div class="fixed inset-0 pointer-events-none z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-scientific-bg"></div>
+    </div>
+    
+    <header class="relative z-10 w-full border-b border-scientific-math/20 bg-scientific-bg/80 backdrop-blur-md">
+      <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full glow-soft bg-scientific-card flex items-center justify-center border border-scientific-math/50">
+            <span class="text-scientific-math font-title font-bold text-lg">ED</span>
+          </div>
+          <h1 class="font-title text-xl font-bold tracking-wider text-white">
+            Lab<span class="text-scientific-math">Virtual</span>
+          </h1>
+        </div>
+        <nav class="hidden md:flex gap-6">
+          <a href="#introduccion" class="text-scientific-text-muted hover:text-scientific-math transition-colors text-sm font-medium">Introducción</a>
+          <a href="#metodo" class="text-scientific-text-muted hover:text-scientific-math transition-colors text-sm font-medium">Método Auxiliar</a>
+          <a href="#casos" class="text-scientific-text-muted hover:text-scientific-math transition-colors text-sm font-medium">Casos de Estudio</a>
+          <a href="#aplicaciones" class="text-scientific-text-muted hover:text-scientific-math transition-colors text-sm font-medium">Aplicaciones</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="relative z-10 w-full">
+      <slot />
+    </main>
+
+    <footer class="relative z-10 border-t border-scientific-math/20 bg-scientific-bg/90 mt-20">
+      <div class="container mx-auto px-6 py-8 text-center text-scientific-text-muted text-sm">
+        <p>Proyecto Educativo STEM • Ecuaciones Diferenciales Lineales Homogéneas</p>
+        <p class="mt-2 text-xs">Desarrollado con Astro, React y Tailwind CSS</p>
+      </div>
+    </footer>
+  </body>
+</html>
