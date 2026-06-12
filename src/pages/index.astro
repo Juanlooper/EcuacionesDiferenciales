@@ -462,9 +462,24 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
             </ul>
           </div>
           
-          <button class="w-full py-3 rounded-lg bg-scientific-math/20 hover:bg-scientific-math text-scientific-text hover:text-scientific-bg font-bold transition-all border border-scientific-math/50">
+          <button id="btn-verificar" class="w-full py-3 rounded-lg bg-scientific-math/20 hover:bg-scientific-math text-scientific-text hover:text-scientific-bg font-bold transition-all border border-scientific-math/50">
             Verificar Respuestas
           </button>
+
+          <div id="respuestas-container" class="hidden mt-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
+            <div class="p-4 bg-scientific-card border border-scientific-math/30 rounded-lg">
+              <p class="text-sm text-scientific-math mb-2 font-bold">1. Raíces complejas conjugadas</p>
+              <MathBlock math={"r = \\pm 3i \\implies y = C_1\\cos(3x) + C_2\\sin(3x)"} />
+            </div>
+            <div class="p-4 bg-scientific-card border border-[#A78BFA]/30 rounded-lg">
+              <p class="text-sm text-[#A78BFA] mb-2 font-bold">2. Raíces reales distintas</p>
+              <MathBlock math={"r_1 = 2, r_2 = -5 \\implies y = C_1e^{2x} + C_2e^{-5x}"} />
+            </div>
+            <div class="p-4 bg-scientific-card border border-scientific-success/30 rounded-lg">
+              <p class="text-sm text-scientific-success mb-2 font-bold">3. Raíces reales repetidas</p>
+              <MathBlock math={"r = 3 \\implies y = (C_1 + C_2x)e^{3x}"} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -545,3 +560,23 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
   </section>
 
 </Layout>
+
+<script>
+  const btn = document.getElementById('btn-verificar');
+  const container = document.getElementById('respuestas-container');
+  
+  if (btn && container) {
+    btn.addEventListener('click', () => {
+      container.classList.toggle('hidden');
+      if (container.classList.contains('hidden')) {
+        btn.textContent = 'Verificar Respuestas';
+        btn.classList.remove('bg-scientific-math', 'text-scientific-bg');
+        btn.classList.add('bg-scientific-math/20', 'text-scientific-text');
+      } else {
+        btn.textContent = 'Ocultar Respuestas';
+        btn.classList.remove('bg-scientific-math/20', 'text-scientific-text');
+        btn.classList.add('bg-scientific-math', 'text-scientific-bg');
+      }
+    });
+  }
+</script>
