@@ -8,7 +8,9 @@ import RootsComparisonGraph from '../components/graphs/RootsComparisonGraph';
 import MassSpringGraph from '../components/graphs/MassSpringGraph';
 import DampedOscillationGraph from '../components/graphs/DampedOscillationGraph';
 import PhaseSpaceGraph from '../components/graphs/PhaseSpaceGraph';
-import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, HelpCircle, Award } from 'lucide-react';
+import ClassDynamic from '../components/ClassDynamic';
+import FormulasAndSteps from '../components/FormulasAndSteps';
+import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, HelpCircle, Award, History, Users, Gift, ListChecks } from 'lucide-react';
 ---
 
 <Layout title="ED Lineales Homogéneas">
@@ -71,28 +73,28 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-          <InfoCard title="Mecánica" className="h-full">
+          <InfoCard client:visible title="Mecánica" className="h-full">
             <ul class="list-disc list-inside space-y-2 text-sm">
               <li>Vibraciones</li>
               <li>Vehículos</li>
               <li>Masa-resorte</li>
             </ul>
           </InfoCard>
-          <InfoCard title="Eléctrica" delay={0.1} className="h-full">
+          <InfoCard client:visible title="Eléctrica" delay={0.1} className="h-full">
             <ul class="list-disc list-inside space-y-2 text-sm">
               <li>Circuitos RLC</li>
               <li>Sistemas de control</li>
               <li>Señales</li>
             </ul>
           </InfoCard>
-          <InfoCard title="Física" delay={0.2} className="h-full">
+          <InfoCard client:visible title="Física" delay={0.2} className="h-full">
             <ul class="list-disc list-inside space-y-2 text-sm">
               <li>Partículas</li>
               <li>Ondas</li>
               <li>Calor</li>
             </ul>
           </InfoCard>
-          <InfoCard title="Biología" delay={0.3} className="h-full">
+          <InfoCard client:visible title="Biología" delay={0.3} className="h-full">
             <ul class="list-disc list-inside space-y-2 text-sm">
               <li>Poblacional</li>
               <li>Epidemias</li>
@@ -101,13 +103,59 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
           </InfoCard>
         </div>
       </div>
+
+      {/* Módulo de Historia */}
+      <div class="mt-12 bg-scientific-card/50 border border-scientific-math/20 p-8 rounded-xl relative overflow-hidden glow-soft">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-scientific-math/5 rounded-full blur-[80px] pointer-events-none"></div>
+        
+        <div class="flex items-center gap-3 mb-8 relative z-10">
+          <div class="w-10 h-10 rounded-lg bg-scientific-math/20 flex items-center justify-center text-scientific-math">
+            <History size={20} />
+          </div>
+          <h3 class="text-2xl font-title font-bold text-white">Evolución Histórica</h3>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-6 relative z-10">
+          {/* Newton */}
+          <div class="relative pl-6 border-l-2 border-scientific-math/40 hover:border-scientific-math transition-colors group">
+            <div class="absolute w-3 h-3 bg-scientific-bg border-2 border-scientific-math rounded-full -left-[7px] top-1 group-hover:bg-scientific-math group-hover:shadow-[0_0_10px_rgba(0,229,255,0.8)] transition-all"></div>
+            <p class="text-sm font-bold text-white mb-1">1671</p>
+            <p class="text-xs text-scientific-math mb-2 font-mono uppercase tracking-wider">Isaac Newton</p>
+            <p class="text-sm text-scientific-text-muted leading-relaxed">Desarrolla el "Método de las fluxiones", sentando las bases del cálculo diferencial e integral.</p>
+          </div>
+          
+          {/* Leibniz */}
+          <div class="relative pl-6 border-l-2 border-[#A78BFA]/40 hover:border-[#A78BFA] transition-colors group">
+            <div class="absolute w-3 h-3 bg-scientific-bg border-2 border-[#A78BFA] rounded-full -left-[7px] top-1 group-hover:bg-[#A78BFA] group-hover:shadow-[0_0_10px_rgba(167,139,250,0.8)] transition-all"></div>
+            <p class="text-sm font-bold text-white mb-1">1676</p>
+            <p class="text-xs text-[#A78BFA] mb-2 font-mono uppercase tracking-wider">G. W. Leibniz</p>
+            <p class="text-sm text-scientific-text-muted leading-relaxed">Introduce la notación moderna (<MathBlock math={"dy/dx"} />) y formula el término "ecuaciones diferenciales".</p>
+          </div>
+          
+          {/* Euler */}
+          <div class="relative pl-6 border-l-2 border-scientific-success/40 hover:border-scientific-success transition-colors group">
+            <div class="absolute w-3 h-3 bg-scientific-bg border-2 border-scientific-success rounded-full -left-[7px] top-1 group-hover:bg-scientific-success group-hover:shadow-[0_0_10px_rgba(46,204,113,0.8)] transition-all"></div>
+            <p class="text-sm font-bold text-white mb-1">Siglo XVIII</p>
+            <p class="text-xs text-scientific-success mb-2 font-mono uppercase tracking-wider">Leonhard Euler</p>
+            <p class="text-sm text-scientific-text-muted leading-relaxed">Aporta métodos analíticos sistemáticos para resolver ecuaciones diferenciales, como la ecuación auxiliar.</p>
+          </div>
+          
+          {/* Laplace / Fourier */}
+          <div class="relative pl-6 border-l-2 border-[#F59E0B]/40 hover:border-[#F59E0B] transition-colors group">
+            <div class="absolute w-3 h-3 bg-scientific-bg border-2 border-[#F59E0B] rounded-full -left-[7px] top-1 group-hover:bg-[#F59E0B] group-hover:shadow-[0_0_10px_rgba(245,158,11,0.8)] transition-all"></div>
+            <p class="text-sm font-bold text-white mb-1">Siglo XIX</p>
+            <p class="text-xs text-[#F59E0B] mb-2 font-mono uppercase tracking-wider">Laplace y Fourier</p>
+            <p class="text-sm text-scientific-text-muted leading-relaxed">Pioneros en aplicar ecuaciones diferenciales al estudio riguroso del calor, mecánica celeste y propagación de ondas.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   {/* Definición Formal */}
   <section class="py-20 px-6 relative bg-scientific-card/30 border-y border-scientific-math/10">
     <div class="container mx-auto max-w-5xl">
-      <InfoCard className="border-l-4 border-l-scientific-math">
+      <InfoCard client:visible className="border-l-4 border-l-scientific-math">
         <h3 class="text-2xl font-title text-white mb-6">Ecuación Diferencial Lineal Homogénea de Orden (n)</h3>
         <p class="text-scientific-text-muted mb-6">Posee coeficientes constantes y la forma general:</p>
         <MathBlock math={"a_ny^{(n)}+a_{n-1}y^{(n-1)}+\\cdots+a_1y'+a_0y=0"} block className="text-2xl bg-scientific-bg/80 py-6 rounded-xl border border-scientific-math/30 shadow-[inset_0_0_20px_rgba(0,229,255,0.05)]" />
@@ -334,6 +382,19 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
     </div>
   </section>
 
+  {/* Guía Práctica y Formulario */}
+  <section id="guia" class="py-20 px-6 relative bg-scientific-card/10">
+    <div class="container mx-auto max-w-5xl">
+      <div class="flex items-center gap-4 mb-12">
+        <div class="w-12 h-12 rounded-xl bg-scientific-math/20 flex items-center justify-center text-scientific-math">
+          <ListChecks size={24} />
+        </div>
+        <h2 class="text-3xl font-title font-bold text-white">Guía Práctica y Formulario</h2>
+      </div>
+      <FormulasAndSteps client:load />
+    </div>
+  </section>
+
   {/* Ejercicios y Evaluación */}
   <section id="ejercicios" class="py-20 px-6 relative bg-scientific-card/30 border-y border-scientific-math/10">
     <div class="container mx-auto max-w-5xl">
@@ -409,8 +470,15 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
     </div>
   </section>
 
+  {/* Dinámica de Clase */}
+  <section id="dinamica" class="py-20 px-6 relative bg-scientific-card/10 border-t border-[#F59E0B]/20">
+    <div class="container mx-auto max-w-4xl">
+      <ClassDynamic client:visible />
+    </div>
+  </section>
+
   {/* Conclusiones */}
-  <section class="py-20 px-6 relative">
+  <section class="py-20 px-6 relative border-t border-scientific-math/10">
     <div class="container mx-auto max-w-4xl text-center">
       <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-scientific-math/20 text-scientific-math mb-8 glow-soft">
         <Award size={32} />
@@ -423,6 +491,56 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
       <p class="text-scientific-math/80">
         Comprender estos principios es la base para el diseño y control de los sistemas tecnológicos modernos.
       </p>
+    </div>
+  </section>
+
+  {/* Créditos */}
+  <section id="creditos" class="py-20 px-6 relative bg-scientific-card/30 border-y border-scientific-math/10">
+    <div class="container mx-auto max-w-5xl">
+      <div class="flex items-center gap-4 mb-12 justify-center">
+        <div class="w-12 h-12 rounded-xl bg-scientific-math/20 flex items-center justify-center text-scientific-math">
+          <Users size={24} />
+        </div>
+        <h2 class="text-3xl font-title font-bold text-white">Créditos del Equipo</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        {/* Miembro 1 */}
+        <div class="flex flex-col items-center group">
+          <div class="w-48 h-48 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-scientific-math/30 mb-4 group-hover:border-scientific-math transition-colors relative glow-soft">
+            <img src="/team/alejandrafalcon.jpg" alt="Alejandra Falcón" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-scientific-math/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          <h4 class="text-xl font-title text-white font-bold mb-1 group-hover:text-scientific-math transition-colors">Alejandra Falcón</h4>
+        </div>
+        
+        {/* Miembro 2 */}
+        <div class="flex flex-col items-center group">
+          <div class="w-48 h-48 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-[#A78BFA]/30 mb-4 group-hover:border-[#A78BFA] transition-colors relative glow-soft">
+            <img src="/team/juanrodriguez.jpg" alt="Juan Rodríguez" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-[#A78BFA]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          <h4 class="text-xl font-title text-white font-bold mb-1 group-hover:text-[#A78BFA] transition-colors">Juan Rodríguez</h4>
+        </div>
+
+        {/* Miembro 3 */}
+        <div class="flex flex-col items-center group">
+          <div class="w-48 h-48 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-scientific-success/30 mb-4 group-hover:border-scientific-success transition-colors relative glow-soft">
+            <img src="/team/migueloliver.jpg" alt="Miguel Oliver" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-scientific-success/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          <h4 class="text-xl font-title text-white font-bold mb-1 group-hover:text-scientific-success transition-colors">Miguel Oliver</h4>
+        </div>
+
+        {/* Miembro 4 */}
+        <div class="flex flex-col items-center group">
+          <div class="w-48 h-48 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-[#F59E0B]/30 mb-4 group-hover:border-[#F59E0B] transition-colors relative glow-soft">
+            <img src="/team/nievesperez.jpg" alt="Nieves Pérez" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-[#F59E0B]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          </div>
+          <h4 class="text-xl font-title text-white font-bold mb-1 group-hover:text-[#F59E0B] transition-colors">Nieves Pérez</h4>
+        </div>
+      </div>
     </div>
   </section>
 

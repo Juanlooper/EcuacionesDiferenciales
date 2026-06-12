@@ -58,7 +58,8 @@ export default function PhaseSpaceGraph() {
             margin: { l: 50, r: 20, t: 20, b: 50 },
             autosize: true,
             showlegend: true,
-            legend: { x: 0, y: 1, bgcolor: 'rgba(10, 14, 23, 0.8)' }
+            legend: { x: 0, y: 1, bgcolor: 'rgba(10, 14, 23, 0.8)' },
+            transition: { duration: 0 }
           }}
           useResizeHandler={true}
           style={{ width: '100%', height: '400px' }}

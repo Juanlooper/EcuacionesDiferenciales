@@ -59,6 +59,7 @@ export default function RootsComparisonGraph() {
             yaxis: { title: 'y', gridcolor: '#1A2333', zerolinecolor: '#00E5FF' },
             margin: { l: 50, r: 20, t: 20, b: 50 },
             autosize: true,
+            transition: { duration: 0 }
           }}
           useResizeHandler={true}
           style={{ width: '100%', height: '400px' }}

@@ -62,6 +62,7 @@ export default function MassSpringGraph() {
             yaxis: { title: 'Posición x(t)', gridcolor: '#1A2333', zerolinecolor: '#00E5FF', range: [-1.5, 1.5] },
             margin: { l: 50, r: 20, t: 20, b: 50 },
             autosize: true,
+            transition: { duration: 0 }
           }}
           useResizeHandler={true}
           style={{ width: '100%', height: '350px' }}
