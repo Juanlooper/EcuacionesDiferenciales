@@ -447,38 +447,42 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
             <p class="text-scientific-text-muted mb-6">Pon a prueba tu conocimiento resolviendo los siguientes sistemas y clasificando sus raíces.</p>
             
             <ul class="space-y-4 mb-8">
-              <li class="flex gap-4 items-center bg-scientific-card p-4 rounded-lg border-l-2 border-scientific-math hover:border-l-4 transition-all cursor-pointer group">
-                <span class="font-mono text-scientific-math">1.</span>
-                <MathBlock math={"y'' + 9y = 0"} className="flex-1 group-hover:glow-text" />
+              <li class="ejercicio-item bg-scientific-card rounded-lg border-l-2 border-scientific-math hover:border-l-4 transition-all cursor-pointer overflow-hidden group">
+                <div class="flex gap-4 items-center p-4">
+                  <span class="font-mono text-scientific-math">1.</span>
+                  <MathBlock math={"y'' + 9y = 0"} className="flex-1 group-hover:glow-text" />
+                  <span class="solucion-texto text-xs text-scientific-math opacity-0 group-hover:opacity-100 transition-opacity">Ver solución</span>
+                </div>
+                <div class="respuesta hidden p-4 border-t border-scientific-math/20 bg-scientific-math/5 animate-in fade-in slide-in-from-top-2">
+                  <p class="text-sm text-scientific-math mb-2 font-bold">Raíces complejas conjugadas</p>
+                  <MathBlock math={"r = \\pm 3i \\implies y = C_1\\cos(3x) + C_2\\sin(3x)"} />
+                </div>
               </li>
-              <li class="flex gap-4 items-center bg-scientific-card p-4 rounded-lg border-l-2 border-[#A78BFA] hover:border-l-4 transition-all cursor-pointer group">
-                <span class="font-mono text-[#A78BFA]">2.</span>
-                <MathBlock math={"y'' + 3y' - 10y = 0"} className="flex-1 group-hover:glow-text" />
+              
+              <li class="ejercicio-item bg-scientific-card rounded-lg border-l-2 border-[#A78BFA] hover:border-l-4 transition-all cursor-pointer overflow-hidden group">
+                <div class="flex gap-4 items-center p-4">
+                  <span class="font-mono text-[#A78BFA]">2.</span>
+                  <MathBlock math={"y'' + 3y' - 10y = 0"} className="flex-1 group-hover:glow-text" />
+                  <span class="solucion-texto text-xs text-[#A78BFA] opacity-0 group-hover:opacity-100 transition-opacity">Ver solución</span>
+                </div>
+                <div class="respuesta hidden p-4 border-t border-[#A78BFA]/20 bg-[#A78BFA]/5 animate-in fade-in slide-in-from-top-2">
+                  <p class="text-sm text-[#A78BFA] mb-2 font-bold">Raíces reales distintas</p>
+                  <MathBlock math={"r_1 = 2, r_2 = -5 \\implies y = C_1e^{2x} + C_2e^{-5x}"} />
+                </div>
               </li>
-              <li class="flex gap-4 items-center bg-scientific-card p-4 rounded-lg border-l-2 border-scientific-success hover:border-l-4 transition-all cursor-pointer group">
-                <span class="font-mono text-scientific-success">3.</span>
-                <MathBlock math={"y'' - 6y' + 9y = 0"} className="flex-1 group-hover:glow-text" />
+
+              <li class="ejercicio-item bg-scientific-card rounded-lg border-l-2 border-scientific-success hover:border-l-4 transition-all cursor-pointer overflow-hidden group">
+                <div class="flex gap-4 items-center p-4">
+                  <span class="font-mono text-scientific-success">3.</span>
+                  <MathBlock math={"y'' - 6y' + 9y = 0"} className="flex-1 group-hover:glow-text" />
+                  <span class="solucion-texto text-xs text-scientific-success opacity-0 group-hover:opacity-100 transition-opacity">Ver solución</span>
+                </div>
+                <div class="respuesta hidden p-4 border-t border-scientific-success/20 bg-scientific-success/5 animate-in fade-in slide-in-from-top-2">
+                  <p class="text-sm text-scientific-success mb-2 font-bold">Raíces reales repetidas</p>
+                  <MathBlock math={"r = 3 \\implies y = (C_1 + C_2x)e^{3x}"} />
+                </div>
               </li>
             </ul>
-          </div>
-          
-          <button id="btn-verificar" class="w-full py-3 rounded-lg bg-scientific-math/20 hover:bg-scientific-math text-scientific-text hover:text-scientific-bg font-bold transition-all border border-scientific-math/50">
-            Verificar Respuestas
-          </button>
-
-          <div id="respuestas-container" class="hidden mt-6 space-y-4 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div class="p-4 bg-scientific-card border border-scientific-math/30 rounded-lg">
-              <p class="text-sm text-scientific-math mb-2 font-bold">1. Raíces complejas conjugadas</p>
-              <MathBlock math={"r = \\pm 3i \\implies y = C_1\\cos(3x) + C_2\\sin(3x)"} />
-            </div>
-            <div class="p-4 bg-scientific-card border border-[#A78BFA]/30 rounded-lg">
-              <p class="text-sm text-[#A78BFA] mb-2 font-bold">2. Raíces reales distintas</p>
-              <MathBlock math={"r_1 = 2, r_2 = -5 \\implies y = C_1e^{2x} + C_2e^{-5x}"} />
-            </div>
-            <div class="p-4 bg-scientific-card border border-scientific-success/30 rounded-lg">
-              <p class="text-sm text-scientific-success mb-2 font-bold">3. Raíces reales repetidas</p>
-              <MathBlock math={"r = 3 \\implies y = (C_1 + C_2x)e^{3x}"} />
-            </div>
           </div>
         </div>
       </div>
@@ -562,21 +566,17 @@ import { Activity, BookOpen, Layers, Zap, PenTool, Target, Binary, CheckCircle, 
 </Layout>
 
 <script>
-  const btn = document.getElementById('btn-verificar');
-  const container = document.getElementById('respuestas-container');
+  const ejercicios = document.querySelectorAll('.ejercicio-item');
   
-  if (btn && container) {
-    btn.addEventListener('click', () => {
-      container.classList.toggle('hidden');
-      if (container.classList.contains('hidden')) {
-        btn.textContent = 'Verificar Respuestas';
-        btn.classList.remove('bg-scientific-math', 'text-scientific-bg');
-        btn.classList.add('bg-scientific-math/20', 'text-scientific-text');
-      } else {
-        btn.textContent = 'Ocultar Respuestas';
-        btn.classList.remove('bg-scientific-math/20', 'text-scientific-text');
-        btn.classList.add('bg-scientific-math', 'text-scientific-bg');
+  ejercicios.forEach(item => {
+    item.addEventListener('click', () => {
+      const respuesta = item.querySelector('.respuesta');
+      const texto = item.querySelector('.solucion-texto');
+      
+      if (respuesta && texto) {
+        respuesta.classList.toggle('hidden');
+        texto.textContent = respuesta.classList.contains('hidden') ? 'Ver solución' : 'Ocultar solución';
       }
     });
-  }
+  });
 </script>
